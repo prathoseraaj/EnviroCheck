@@ -9,6 +9,8 @@ async function getairqualityindex(lat,lon) {
         const response = await fetch(`${apiurl}?lat=${lat}&lon=${lon}&appid=${apiKey}`);
         const data = await response.json();
         console.log(data);
+        document.getElementById('aqiData').innerHTML = `${data.list[0].main.api}` ;
+
     }
 
     catch(error){
@@ -17,9 +19,11 @@ async function getairqualityindex(lat,lon) {
 
 }
 
-//Example coordinates for San Ftancisco
+//Example coordinates for San Francisco
 const lan = 37.7749;
 const lon = -122.4194;
 
+//Adding AQI(Air Qulaity Index) to HTML
+ 
 
 getairqualityindex(lan,lon);
