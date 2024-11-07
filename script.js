@@ -1,4 +1,4 @@
-//going to use Ambee's Air Quality API
+//going to use OpenWeatherMap's Air Quality API
 const apiKey = '23b1363ce46188a601ed51900d4a058c';
 const apiurl = 'https://api.openweathermap.org/data/2.5/air_pollution';
 
