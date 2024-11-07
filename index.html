@@ -1,20 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EnviroCheck</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ENV-CHECK</title>
+  <link rel="stylesheet" href="styles.css">
+
 </head>
 <body>
-    <div class="container">
-        <div id="airQuality">
-            <h2>Air quality Information</h2>
-            <p id="location">LOCATION: <span id="locationData"></span> </p>
-            <p id="aqi">AQI(Air Quality Index): <span id="aqiData"></span> </p>
-        </div>
 
+  <header class="l-header">
+    <nav class="nav bd-grid">
+      <div>
+        <a href="#" class="nav__logo">ENV-CHECK</a>
+      </div>
+
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li class="nav__item"><a href="#" class="nav__link">HOME</a></li>
+          <li class="nav__item"><a href="#" class="nav__link">LOGS</a></li>
+          <li class="nav__item"><a href="#" class="nav__link">ANYOTHER</a></li>
+          <li class="nav__item"><a href="#" class="nav__link">My profile</a></li>
+          <li class="nav__item"><button class="contact-button">CONTACT</button></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <div class="container">
+    <div class="sidebar">
+      <div class="pollutant">
+        <span>PM 2.5</span>
+        <span>value</span>
+      </div>
+      <div class="pollutant">
+        <span>PM 10</span>
+        <span>value</span>
+      </div>
+      <div class="pollutant">
+        <span>O3</span>
+        <span>value</span>
+      </div>
+      <div class="pollutant">
+        <span>NO2</span>
+        <span>value</span>
+      </div>
+      <div class="pollutant">
+        <span>SO2</span>
+        <span>value</span>
+      </div>
     </div>
-    <script src="script.js"></script>
+
+    <!-- Graph section -->
+    <div class="graph">
+      ADDING GRAPH BASED ON THE HISTORICAL DATA OF AIR POLLUTION
+    </div>
+
+    <!-- Description section -->
+    <div class="description">
+      description based on the data of the air pollutant
+    </div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>

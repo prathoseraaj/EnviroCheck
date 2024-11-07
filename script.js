@@ -9,8 +9,8 @@ async function getairqualityindex(lat,lon) {
         const response = await fetch(`${apiurl}?lat=${lat}&lon=${lon}&appid=${apiKey}`);
         const data = await response.json();
         console.log(data);
-        document.getElementById('aqiData').innerHTML = `${data.list[0].main.api}` ;
-
+        document.getElementById('aqiData').innerHTML = `${data.list[0].main.aqi}` ;
+        
     }
 
     catch(error){
