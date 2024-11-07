@@ -24,6 +24,24 @@ async function getairqualityindex(lat,lon) {
 
 }
 
+//going to use OpenWeatherMap's to fetch weekly Air Quality API
+
+const weeklyUrl = 'http://api.openweathermap.org/data/2.5/air_pollution/history';
+
+async function getweekairqualityindex(lat,lon) {
+    const weeksInMonth = 4 ;
+    const currentDate = new Date();
+    const oneMonthAgo = new Date();
+    oneMonthAgo.setDate( currentDate.getDate() - 30 );
+    //console.log(oneMonthAgo); TO CHECK
+    //console.log(currentDate); TO CHECK
+    for (let i = 0; i < weeksInMonth; i++) {
+
+    
+}
+}
+
+
 //Example coordinates for San Francisco
 const lan = 37.7749;
 const lon = -122.4194;
@@ -32,3 +50,4 @@ const lon = -122.4194;
  
 
 getairqualityindex(lan,lon);
+getweekairqualityindex(lan,lon);
