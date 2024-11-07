@@ -35,6 +35,10 @@ async function getweekairqualityindex(lat,lon) {
     oneMonthAgo.setDate( currentDate.getDate() - 30 );
     //console.log(oneMonthAgo); TO CHECK
     //console.log(currentDate); TO CHECK
+
+    let date = oneMonthAgo ;
+    let airqualitydata = [] ;
+
     for (let i = 0; i < weeksInMonth; i++) {
 
     
