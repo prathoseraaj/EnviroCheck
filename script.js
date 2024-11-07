@@ -40,6 +40,10 @@ async function getweekairqualityindex(lat,lon) {
     let airqualitydata = [] ;
 
     for (let i = 0; i < weeksInMonth; i++) {
+        //we need to convert the date to timestrap ie; Convert 2024-10-31 into a UNIX timestamp. The timestamp will look something like 1635654000.
+        const timestamp = Math.floor(date.getTime() / 1000);
+        /*console.log(timestamp); TO CHECK TIMESTAMP VALUE*/
+        const weeklydataurl = `${baseUrl}?lat=${lat}&lon=${lon}&start=${timestamp}&end=${timestamp + (7 * 86400)}&appid=${apiKey}`;
 
     
 }
