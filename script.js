@@ -46,10 +46,15 @@ async function getweekairqualityindex(lat,lon) {
         const weeklydataurl = `${weeklyUrl}?lat=${lat}&lon=${lon}&start=${timestamp}&end=${timestamp + (7 * 86400)}&appid=${apiKey}`;
 
         //fetchdata
+        try{
         const weeklyresponse = await fetch(weeklydataurl);
         const weeklydata = await weeklyresponse.json();
         console.log(weeklydata);
-    
+        }
+        catch(error){
+            console.error('Error fetching data:', error);
+
+        }
 }
 }
 
