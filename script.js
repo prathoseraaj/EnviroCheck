@@ -60,11 +60,11 @@ async function getweekairqualityindex(lat,lon) {
 
 
 //Example coordinates for San Francisco
-const lan = 37.7749;
+const lat = 37.7749;
 const lon = -122.4194;
 
 //Adding AQI(Air Qulaity Index) to HTML
  
 
-getairqualityindex(lan,lon);
-getweekairqualityindex(lan,lon);
+getairqualityindex(lat,lon);
+getweekairqualityindex(lat,lon);
