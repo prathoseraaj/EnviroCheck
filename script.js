@@ -50,6 +50,8 @@ async function getweekairqualityindex(lat,lon) {
         const weeklyresponse = await fetch(weeklydataurl);
         const weeklydata = await weeklyresponse.json();
         console.log(weeklydata);
+        airqualitydata.push(weeklydata);
+        console.log(airqualitydata);
         }
         catch(error){
             console.error('Error fetching data:', error);
