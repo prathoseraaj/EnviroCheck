@@ -59,6 +59,7 @@ async function getweekairqualityindex(lat,lon) {
 
 //going to use POST to Flask API 
 async function predictAQI(weeklydata) {
+    try{
     const response = await fetch('http://localhost:5000/predict' , {
         method: 'POST',
         headers: {
@@ -69,6 +70,11 @@ async function predictAQI(weeklydata) {
 
     const predictions = await response.json();
     console.log('prediciton AQI', predictions);
+    }
+
+    catch (error) {
+        console.error("error");
+    }
     
 }
 
