@@ -54,6 +54,8 @@ async function getweekairqualityindex(lat,lon) {
             console.error('Error fetching data:', error);
 
         }
+        //move to the next week
+        date.setDate(date.getDate() + 7);
     }
 }
 
