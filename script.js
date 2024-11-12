@@ -59,6 +59,21 @@ async function getweekairqualityindex(lat,lon) {
     }
 }
 
+function processweeklydata(weeklydata) {
+    if(weeklydata && weeklydata.list) {
+        const pollutionData = weeklydata.list.map(item => ({
+            time: new Date(item.dt*1000).toLocaleString(),
+            pm2_5: item.components.pm2_5 ,
+            pm10: item.components.pm10 ,
+            o3: item.components.o3 ,
+            no2: item.components.no2 ,
+            so2: item.components.so2 ,
+        }));
+    console.log(`Pollution Data ${pollutionData}`);    
+    }
+    
+}
+
 //Example coordinates for San Francisco
 const lat = 37.7749;
 const lon = -122.4194;
