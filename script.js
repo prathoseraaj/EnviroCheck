@@ -19,7 +19,7 @@ async function getairqualityindex(lat,lon) {
     }
 
     catch(error){
-        console.log("error")
+        console.error("error")
     }
 
 }
