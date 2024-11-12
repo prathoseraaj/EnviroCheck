@@ -77,7 +77,57 @@ function processweeklydata(weeklydata) {
         o3 = pollutionData.map(item => item.o3);
         no2 = pollutionData.map(item => item.no2);
         so2 = pollutionData.map(item => item.so2);
+        generateGraph(pm2_5, pm10, o3, no2, so2);
     }
+    else{
+        console.log(`Weekly data unavailable`);
+    }
+}
+
+function generateGraph(pm2_5, pm10, o3, no2, so2){
+    const ctx = document.getElementById('pollutionChart').getcontext('2d');
+
+    //check weather the graph already exist
+    if(window.pollutionChart && typeof window.pollutionChart.destroy === 'function') {
+       window.pollutionChart.destroy(); 
+    }
+
+    //create a new chart
+    window.pollutionChart = new CharacterData(ctx, {
+        type: 'line' ,
+        data: {
+            label: [],
+            datasets: [
+                {
+                    label: 'PM2.5',
+                    data: pm2_5 ,
+                    borderColor: 'rgba(255, 99, 132, 1)' ,
+
+                },
+                {
+                    label: 'PM10' ,
+                    data: pm10 ,
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                },
+                {
+                    label: 'o3' ,
+                    data: o3 ,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                },
+                {
+                    label: 'no2' ,
+                    data: no2 ,
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                },
+                {
+                    label: 'so2' ,
+                    data: so2 ,
+                    borderColor: 'rgba(255, 159, 64, 1)',
+                },
+            ]
+        }
+    })
+    
 }
 
 //Example coordinates for San Francisco
