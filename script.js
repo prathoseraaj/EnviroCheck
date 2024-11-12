@@ -62,8 +62,8 @@ async function getweekairqualityindex(lat,lon) {
 
 function processweeklydata(weeklydata) {
     if(weeklydata && weeklydata.list) {
-        const pollutionData = weeklydata.list.map(item => ({
-            time: new Date(item.dt*1000).toLocaleString(),
+        const pollutionData = weeklydata.list.map((item,index) => ({
+            day: `Day-${index+1}`,
             pm2_5: item.components.pm2_5 ,
             pm10: item.components.pm10 ,
             o3: item.components.o3 ,
