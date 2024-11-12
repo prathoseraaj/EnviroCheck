@@ -85,7 +85,7 @@ function processweeklydata(weeklydata) {
 }
 
 function generateGraph(pm2_5, pm10, o3, no2, so2){
-    const ctx = document.getElementById('pollutionChart').getcontext('2d');
+    const ctx = document.getElementById('pollutionChart').getContext('2d');
 
     //check weather the graph already exist
     if(window.pollutionChart && typeof window.pollutionChart.destroy === 'function') {
@@ -93,10 +93,9 @@ function generateGraph(pm2_5, pm10, o3, no2, so2){
     }
 
     //create a new chart
-    window.pollutionChart = new CharacterData(ctx, {
+    window.pollutionChart = new Chart(ctx, {
         type: 'line' ,
         data: {
-            label: [],
             datasets: [
                 {
                     label: 'PM2.5',
@@ -125,8 +124,19 @@ function generateGraph(pm2_5, pm10, o3, no2, so2){
                     borderColor: 'rgba(255, 159, 64, 1)',
                 },
             ]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                x:{
+                    display: false, //which hides the x-axis labels
+                },
+                y: {
+                    beginAtZero: true 
+                },
+            }
         }
-    })
+    });
     
 }
 
