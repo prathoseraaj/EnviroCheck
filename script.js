@@ -57,27 +57,6 @@ async function getweekairqualityindex(lat,lon) {
     }
 }
 
-//going to use POST to Flask API 
-async function predictAQI(weeklydata) {
-    try{
-    const response = await fetch('http://localhost:5000/predict' , {
-        method: 'POST',
-        headers: {
-            'Content-Type ': 'application/json',
-        },
-        body: JSON.stringify({weeklydata: weeklydata}),
-    });
-
-    const predictions = await response.json();
-    console.log('prediciton AQI', predictions);
-    }
-
-    catch (error) {
-        console.error("error");
-    }
-    
-}
-
 //Example coordinates for San Francisco
 const lat = 37.7749;
 const lon = -122.4194;
