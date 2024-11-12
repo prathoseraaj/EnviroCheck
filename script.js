@@ -71,8 +71,13 @@ function processweeklydata(weeklydata) {
             so2: item.components.so2 ,
         })); 
     console.table(pollutionData); 
+    //for plotting
+        pm2_5 = pollutionData.map(item => item.pm2_5);
+        pm10 = pollutionData.map(item => item.pm10);
+        o3 = pollutionData.map(item => item.o3);
+        no2 = pollutionData.map(item => item.no2);
+        so2 = pollutionData.map(item => item.so2);
     }
-    
 }
 
 //Example coordinates for San Francisco
