@@ -26,7 +26,7 @@ async function getairqualityindex(lat,lon) {
 
 //going to use OpenWeatherMap's to fetch weekly Air Quality API
 
-const weeklyUrl = 'http://api.openweathermap.org/data/2.5/air_pollution/history';
+const weeklyUrl = 'https://api.openweathermap.org/data/2.5/air_pollution/history';
 
 async function getweekairqualityindex(lat,lon) {
     const weeksInMonth = 4 ;
