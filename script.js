@@ -66,6 +66,9 @@ async function predictAQI(weeklydata) {
         },
         body: JSON.stringify({weeklydata: weeklydata}),
     });
+
+    const predictions = await response.json();
+    console.log('prediciton AQI', predictions);
     
 }
 
