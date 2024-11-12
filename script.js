@@ -29,7 +29,7 @@ async function getairqualityindex(lat,lon) {
 const weeklyUrl = 'https://api.openweathermap.org/data/2.5/air_pollution/history';
 
 async function getweekairqualityindex(lat,lon) {
-
+    const weeksInMonth = 4 ;
     const currentDate = new Date();
     const oneMonthAgo = new Date();
     oneMonthAgo.setDate( currentDate.getDate() - 30 );
@@ -38,12 +38,11 @@ async function getweekairqualityindex(lat,lon) {
 
     let date = oneMonthAgo ;
 
-
+    for (let i = 0; i < weeksInMonth; i++) {
         //we need to convert the date to timestrap ie; Convert 2024-10-31 into a UNIX timestamp. The timestamp will look something like 1635654000.
-        const starttimestamp = Math.floor(date.getTime() / 1000);
-        const endtimestamp = Math.floor(currentDate.getTime() / 1000);
+        const timestamp = Math.floor(date.getTime() / 1000);
         /*console.log(timestamp); TO CHECK TIMESTAMP VALUE*/
-        const weeklydataurl = `${weeklyUrl}?lat=${lat}&lon=${lon}&start=${starttimestamp}&end=${endtimestamp + (7 * 86400)}&appid=${apiKey}`;
+        const weeklydataurl = `${weeklyUrl}?lat=${lat}&lon=${lon}&start=${timestamp}&end=${timestamp + (7 * 86400)}&appid=${apiKey}`;
 
         //fetchdata
         try{
@@ -55,7 +54,7 @@ async function getweekairqualityindex(lat,lon) {
             console.error('Error fetching data:', error);
 
         }
-    
+    }
 }
 
 //going to use POST to Flask API 
