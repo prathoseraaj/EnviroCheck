@@ -37,7 +37,6 @@ async function getweekairqualityindex(lat,lon) {
     //console.log(currentDate); TO CHECK
 
     let date = oneMonthAgo ;
-    let airqualitydata = [] ;
 
     for (let i = 0; i < weeksInMonth; i++) {
         //we need to convert the date to timestrap ie; Convert 2024-10-31 into a UNIX timestamp. The timestamp will look something like 1635654000.
@@ -50,8 +49,6 @@ async function getweekairqualityindex(lat,lon) {
         const weeklyresponse = await fetch(weeklydataurl);
         const weeklydata = await weeklyresponse.json();
         console.log(weeklydata);
-        airqualitydata.push(weeklydata);
-        console.log(airqualitydata);
         }
         catch(error){
             console.error('Error fetching data:', error);
