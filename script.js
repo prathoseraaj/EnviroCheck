@@ -72,19 +72,20 @@ function processweeklydata(weeklydata) {
         })); 
     console.table(pollutionData); 
     //for plotting
+        day = pollutionData.map(item => item.day);
         pm2_5 = pollutionData.map(item => item.pm2_5);
         pm10 = pollutionData.map(item => item.pm10);
         o3 = pollutionData.map(item => item.o3);
         no2 = pollutionData.map(item => item.no2);
         so2 = pollutionData.map(item => item.so2);
-        generateGraph(pm2_5, pm10, o3, no2, so2);
+        generateGraph(day,pm2_5, pm10, o3, no2, so2);
     }
     else{
         console.log(`Weekly data unavailable`);
     }
 }
 
-function generateGraph(pm2_5, pm10, o3, no2, so2){
+function generateGraph(day,pm2_5, pm10, o3, no2, so2){
     const ctx = document.getElementById('pollutionChart').getContext('2d');
 
     //check weather the graph already exist
@@ -96,6 +97,7 @@ function generateGraph(pm2_5, pm10, o3, no2, so2){
     window.pollutionChart = new Chart(ctx, {
         type: 'line' ,
         data: {
+            labels: day,
             datasets: [
                 {
                     label: 'PM2.5',
