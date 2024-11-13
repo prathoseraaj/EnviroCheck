@@ -62,8 +62,8 @@ async function getweekairqualityindex(lat,lon) {
 
 function processweeklydata(weeklydata) {
     if(weeklydata && weeklydata.list) {
-        const pollutionData = weeklydata.list.map((item,index) => ({
-            day: `Day-${index+1}`,
+        const pollutionData = weeklydata.list.map((item) => ({
+            time: new Date(item.dt * 1000).toLocaleString(),
             pm2_5: item.components.pm2_5 ,
             pm10: item.components.pm10 ,
             o3: item.components.o3 ,
@@ -71,21 +71,28 @@ function processweeklydata(weeklydata) {
             so2: item.components.so2 ,
         })); 
     console.table(pollutionData); 
+
+    //filtering the data 
+    const filterdata = pollutionData.filter((item => {
+        const hours = item.time.gethours();
+        return hours === 12 ;
+    }))    
+
     //for plotting
-        day = pollutionData.map(item => item.day);
+        time = pollutionData.map(item => item.time);
         pm2_5 = pollutionData.map(item => item.pm2_5);
         pm10 = pollutionData.map(item => item.pm10);
         o3 = pollutionData.map(item => item.o3);
         no2 = pollutionData.map(item => item.no2);
         so2 = pollutionData.map(item => item.so2);
-        generateGraph(day,pm2_5, pm10, o3, no2, so2);
+        generateGraph(time,pm2_5, pm10, o3, no2, so2);
     }
     else{
         console.log(`Weekly data unavailable`);
     }
 }
 
-function generateGraph(day,pm2_5, pm10, o3, no2, so2){
+function generateGraph(time,pm2_5, pm10, o3, no2, so2){
     const ctx = document.getElementById('pollutionChart').getContext('2d');
 
     //check weather the graph already exist
@@ -97,7 +104,7 @@ function generateGraph(day,pm2_5, pm10, o3, no2, so2){
     window.pollutionChart = new Chart(ctx, {
         type: 'line' ,
         data: {
-            labels: day,
+            labels: time,
             datasets: [
                 {
                     label: 'PM2.5',
