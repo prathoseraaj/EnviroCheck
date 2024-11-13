@@ -51,7 +51,6 @@ async function getweekairqualityindex(lat,lon) {
         const weeklydata = await weeklyresponse.json();
         console.log(weeklydata);
         weeklyarray = weeklyarray.concat(weeklydata.list);
-        processweeklydata(weeklydata);
         }
         catch(error){
             console.error('Error fetching data:', error);
@@ -60,11 +59,13 @@ async function getweekairqualityindex(lat,lon) {
         //move to the next week
         date.setDate(date.getDate() + 7);
     }
+    processweeklydata(weeklyarray);
+
 }
 
-function processweeklydata(weeklydata) {
-    if(weeklydata && weeklydata.list) {
-        const pollutionData = weeklydata.list.map((item) => ({
+function processweeklydata(weeklyarray) {
+    if(weeklyarray && weeklyarray.length) {
+        const pollutionData = weeklyarray.map((item) => ({
             time: new Date(item.dt * 1000).toLocaleString(),
             pm2_5: item.components.pm2_5 ,
             pm10: item.components.pm10 ,
