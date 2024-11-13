@@ -50,6 +50,7 @@ async function getweekairqualityindex(lat,lon) {
         const weeklyresponse = await fetch(weeklydataurl);
         const weeklydata = await weeklyresponse.json();
         console.log(weeklydata);
+        weeklyarray = weeklyarray.concat(weeklydata.list);
         processweeklydata(weeklydata);
         }
         catch(error){
