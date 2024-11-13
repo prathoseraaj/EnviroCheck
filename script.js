@@ -37,6 +37,7 @@ async function getweekairqualityindex(lat,lon) {
     //console.log(currentDate); TO CHECK
 
     let date = oneMonthAgo ;
+    weeklyarray = [] ;
 
     for (let i = 0; i < weeksInMonth; i++) {
         //we need to convert the date to timestrap ie; Convert 2024-10-31 into a UNIX timestamp. The timestamp will look something like 1635654000.
