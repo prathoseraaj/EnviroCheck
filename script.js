@@ -65,7 +65,12 @@ async function getweekairqualityindex(lat,lon) {
 
 function processweeklydata(weeklyarray) {
     if(weeklyarray && weeklyarray.length) {
-        const pollutionData = weeklyarray.map((item) => ({
+        //using filter to avoid clumsyiess of 672 data
+        const filterdata = weeklyarray.filter(item => {
+            const date = new Date(item.dt*1000);
+            return date.getHours() === 12 ;
+        })
+        const pollutionData = filterdata.map((item) => ({
             time: new Date(item.dt * 1000).toLocaleString(),
             pm2_5: item.components.pm2_5 ,
             pm10: item.components.pm10 ,
