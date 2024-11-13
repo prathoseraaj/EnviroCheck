@@ -139,7 +139,7 @@ function generateGraph(time,pm2_5, pm10, o3, no2, so2){
             responsive: true,
             scales: {
                 x:{
-                    display: false, //which hides the x-axis labels
+                    display: false //which hides the x-axis labels
                 },
                 y: {
                     beginAtZero: true 
@@ -150,9 +150,9 @@ function generateGraph(time,pm2_5, pm10, o3, no2, so2){
     
 }
 
-//Example coordinates for San Francisco
-const lat = 37.7749;
-const lon = -122.4194;
+//Example coordinates for JAIN UNIVERSITY
+const lat = 12.64091782473378;
+const lon = 77.4405109782069;
 
 //Adding AQI(Air Qulaity Index) to HTML
  
