@@ -74,17 +74,17 @@ function processweeklydata(weeklydata) {
 
     //filtering the data 
     const filterdata = pollutionData.filter((item => {
-        const hours = item.time.gethours();
+        const hours = new Date(item.time).getHours();
         return hours === 12 ;
     }))    
 
     //for plotting
-        time = pollutionData.map(item => item.time);
-        pm2_5 = pollutionData.map(item => item.pm2_5);
-        pm10 = pollutionData.map(item => item.pm10);
-        o3 = pollutionData.map(item => item.o3);
-        no2 = pollutionData.map(item => item.no2);
-        so2 = pollutionData.map(item => item.so2);
+        time = filterdata.map(item => item.time.toLocaleString());
+        pm2_5 = filterdata.map(item => item.pm2_5);
+        pm10 = filterdata.map(item => item.pm10);
+        o3 = filterdata.map(item => item.o3);
+        no2 = filterdata.map(item => item.no2);
+        so2 = filterdata.map(item => item.so2);
         generateGraph(time,pm2_5, pm10, o3, no2, so2);
     }
     else{
