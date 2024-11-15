@@ -1,12 +1,12 @@
-//going to use OpenWeatherMap's Air Quality API
-const apiKey = '23b1363ce46188a601ed51900d4a058c';
-const apiurl = 'https://api.openweathermap.org/data/2.5/air_pollution';
+//going to use AQICN's Air Quality API
+const token = 'f18b82b48803e44b583d383200ba079fd4cac4a2';  // Your AQICN API token
+const apiurl = 'https://api.waqi.info/feed/';
 
 //url = apiurl?lat={lat}&lon={lon}&appid={apikey}
 
 async function getairqualityindex(lat,lon) {
     try {
-        const response = await fetch(`${apiurl}?lat=${lat}&lon=${lon}&appid=${apiKey}`);
+        const response = await fetch(`${apiurl}geo:${lat};${lon}/?token=${token}`);
         const data = await response.json();
         console.log(data);
         document.getElementById('pm2.5').innerHTML = `${data.list[0].components.pm2_5}` ;
@@ -25,7 +25,7 @@ async function getairqualityindex(lat,lon) {
 }
 
 //going to use OpenWeatherMap's to fetch weekly Air Quality API
-
+const apiKey = '23b1363ce46188a601ed51900d4a058c';
 const weeklyUrl = 'https://api.openweathermap.org/data/2.5/air_pollution/history';
 
 async function getweekairqualityindex(lat,lon) {
