@@ -24,9 +24,8 @@ async function getairqualityindex(lat,lon) {
 
 }
 
-//going to use OpenWeatherMap's to fetch weekly Air Quality API
-const apiKey = '23b1363ce46188a601ed51900d4a058c';
-const weeklyUrl = 'https://api.openweathermap.org/data/2.5/air_pollution/history';
+//going to use AQICN"S API to fetch weekly Air Quality data 
+const weeklyurl = 'https://api.waqi.info/history/';
 
 async function getweekairqualityindex(lat,lon) {
     const weeksInMonth = 4 ;
@@ -71,12 +70,12 @@ function processweeklydata(weeklyarray) {
             return date.getHours() === 12 ;
         })
         const pollutionData = filterdata.map((item) => ({
-            time: new Date(item.time.s * 1000).toLocaleString(),
-            pm2_5: item.iaqi.pm25.v,
-            pm10: item.iaqi.pm10.v,
-            o3: item.iaqi.o3.v,
-            no2: item.iaqi.no2.v,
-            so2: item.iaqi.so2.v
+                time: new Date(item.time.s * 1000).toLocaleString(),
+                pm2_5: item.iaqi.pm25.v,
+                pm10: item.iaqi.pm10.v,
+                o3: item.iaqi.o3.v,
+                no2: item.iaqi.no2.v,
+                so2: item.iaqi.so2.v
         })); 
     console.table(pollutionData); 
     //for plotting
