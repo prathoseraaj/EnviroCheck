@@ -71,12 +71,12 @@ function processweeklydata(weeklyarray) {
             return date.getHours() === 12 ;
         })
         const pollutionData = filterdata.map((item) => ({
-            time: new Date(item.dt * 1000).toLocaleString(),
-            pm2_5: item.components.pm2_5 ,
-            pm10: item.components.pm10 ,
-            o3: item.components.o3 ,
-            no2: item.components.no2 ,
-            so2: item.components.so2 ,
+            time: new Date(item.time.s * 1000).toLocaleString(),
+            pm2_5: item.iaqi.pm25.v,
+            pm10: item.iaqi.pm10.v,
+            o3: item.iaqi.o3.v,
+            no2: item.iaqi.no2.v,
+            so2: item.iaqi.so2.v
         })); 
     console.table(pollutionData); 
     //for plotting
